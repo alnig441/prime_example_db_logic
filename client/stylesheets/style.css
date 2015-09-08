@@ -1,0 +1,27 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+.header {
+    color: #efefef;
+    height: 200px;
+    background-color: #262626;
+}
+
+.header p, .header button {
+    margin-left: 100px;
+}
+
+.header p {
+    margin-top: 50px;
+}
+
+.delete {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
