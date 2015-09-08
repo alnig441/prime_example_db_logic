@@ -10,24 +10,24 @@ $(document).ready(function(){
     $generate.on('click', function(){
         $.ajax({
             type: "GET",
-            url: "/users/generate",
-            success: function(){
-                console.log("GENERATED!");
-                getData();
-            }
+            url: "/users/generate"
+        }).done(function(){
+            console.log("GENERATED!");
+            getData();
         });
     });
 
     $container.on('click', '.delete', function(){
         var $el = $(this);
-        $.ajax({
+        var xhr = $.ajax({
             type: "DELETE",
-            url: "/users/" + $(this).data('id'),
-            success: function(data){
-                console.log(data);
-                $el.parent().remove();
-            }
+            url: "/users/" + $(this).data('id')
         });
+
+        xhr.done(function(data){
+            console.log(data);
+            $el.parent().remove();
+        })
     });
 
     getData();
@@ -36,12 +36,11 @@ $(document).ready(function(){
 function getData(){
     $.ajax({
         type: "GET",
-        url: "/users",
-        success: function(data){
-            console.log(data);
-            peopleData = data;
-            appendPeople();
-        }
+        url: "/users"
+    }).done(function(data){
+        console.log(data);
+        peopleData = data;
+        appendPeople();
     });
 }
 
