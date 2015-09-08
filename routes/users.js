@@ -7,11 +7,11 @@ var group = require('../logic/group_generate');
 
 router.get("/generate", function(req, res, next){
     group(20);
-    res.send("Yes");
+    res.send(200);
 });
 
 router.delete("/:id", function(req, res, next){
-    people.findByIdAndRemove(req.params.id, req.body, function(err, post){
+    people.findByIdAndRemove(req.params.id, function(err, post){
         if(err){
             console.log("Error!!", err)
         }

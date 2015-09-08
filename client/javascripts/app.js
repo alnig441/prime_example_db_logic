@@ -10,7 +10,7 @@ $(document).ready(function(){
     $generate.on('click', function(){
         $.ajax({
             type: "GET",
-            url: "/things/generate",
+            url: "/users/generate",
             success: function(){
                 console.log("GENERATED!");
                 getData();
@@ -22,7 +22,7 @@ $(document).ready(function(){
         var $el = $(this);
         $.ajax({
             type: "DELETE",
-            url: "/things/" + $(this).data('id'),
+            url: "/users/" + $(this).data('id'),
             success: function(data){
                 console.log(data);
                 $el.parent().remove();
@@ -48,12 +48,12 @@ function getData(){
 function appendPeople(){
     $container.empty();
     for(var i = 0; i < peopleData.length; i++){
-        $container.append("<div>", {class:'col-sm-3 well'});
+        $container.append($("<div>", {class:'col-sm-3 well'}));
         var $el =  $container.children().last();
-        $el.append("<p>", { class: 'lead' }).text(peopleData[i].name);
-        $el.append("<p>").text(peopleData[i].age + ", " + peopleData[i].sex);
-        $el.append("<p>", { class: 'location' }).text(peopleData[i].location);
-        $el.append("<p>", { class:'twitter' }).text(peopleData[i].twitter);
-        $el.append("<button>", { class:'btn btn-danger delete', 'data-id': peopleData[i]._id  }).text('X');
+        $el.append($("<p>", { class: 'lead' }).text(peopleData[i].name));
+        $el.append($("<p>").text(peopleData[i].age + ", " + peopleData[i].sex));
+        $el.append($("<p>", { class: 'location' }).text(peopleData[i].location));
+        $el.append($("<p>", { class:'twitter' }).text(peopleData[i].twitter));
+        $el.append($("<button>", { class:'btn btn-danger delete', 'data-id': peopleData[i]._id  }).text('X'));
     }
 }
